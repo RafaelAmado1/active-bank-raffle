@@ -4,39 +4,35 @@ const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
 
-// Client-side (anon key, respects RLS)
 export const supabase = createClient(url, anonKey)
-
-// Server-side (service role, bypasses RLS — only use in API routes)
 export const supabaseAdmin = createClient(url, serviceKey, {
   auth: { persistSession: false },
 })
 
-export type Session = {
+export type Raffle = {
   id: string
-  name: string
+  label: string
   status: 'active' | 'closed'
-  created_at: string
-  closed_at: string | null
+  duration_sec: number
+  starts_at: string
+  ends_at: string | null
   winner_id: string | null
+  created_at: string
 }
 
-export type Participant = {
+export type RaffleParticipant = {
   id: string
-  session_id: string
+  raffle_id: string
   name: string
   phone: string
+  email: string
   registered_at: string
 }
 
-export type Draw = {
+export type LoungeEntrant = {
   id: string
-  session_id: string
-  label: string
-  winner_id: string
-  drawn_at: string
-  participants?: {
-    name: string
-    phone: string
-  }
+  name: string
+  phone: string
+  email: string
+  entered_at: string
 }
