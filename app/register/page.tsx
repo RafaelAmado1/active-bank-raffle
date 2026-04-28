@@ -133,9 +133,6 @@ function RegisterForm() {
             </button>
           </form>
 
-          <p className="text-xs text-[#6B7280] mt-6 leading-relaxed">
-            Os dados serão usados apenas para contacto em caso de prémio. Tratamento conforme RGPD.
-          </p>
         </div>
       </main>
       <Footer />
