@@ -155,13 +155,7 @@ function Footer() {
 
 function ActiveBankLogo() {
   return (
-    <div className="flex items-center gap-2.5">
-      <div className="w-7 h-7 rounded-full bg-[#0096DC] flex items-center justify-center">
-        <span className="text-white font-bold text-xs tracking-tight">A</span>
-      </div>
-      <span className="text-base font-semibold tracking-tight text-[#0A0A0A]">
-        ActivoBank
-      </span>
-    </div>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/logo_activobank.svg" alt="ActivoBank" width={137} height={22} />
   )
 }

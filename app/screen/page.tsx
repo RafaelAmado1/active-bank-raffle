@@ -236,17 +236,14 @@ function ScreenFooter() {
 }
 
 function ActiveBankLogo({ invert = false }: { invert?: boolean }) {
-  const text = invert ? 'text-white' : 'text-[#0A0A0A]'
-  const dot = invert ? 'bg-white' : 'bg-[#0096DC]'
-  const dotText = invert ? 'text-[#0096DC]' : 'text-white'
   return (
-    <div className="flex items-center gap-2.5">
-      <div className={`w-8 h-8 rounded-full ${dot} flex items-center justify-center`}>
-        <span className={`${dotText} font-bold text-sm`}>A</span>
-      </div>
-      <span className={`text-lg font-semibold tracking-tight ${text}`}>
-        ActivoBank
-      </span>
-    </div>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/logo_activobank.svg"
+      alt="ActivoBank"
+      width={137}
+      height={22}
+      className={invert ? 'brightness-0 invert' : ''}
+    />
   )
 }
