@@ -48,12 +48,12 @@ type DrawPreset = {
 }
 
 const DRAW_PRESETS: DrawPreset[] = [
-  { label: 'Golo',      emoji: '', hint: 'Após um golo' },
-  { label: 'Intervalo', emoji: '', hint: 'Pausa do jogo' },
-  { label: 'Penalty',   emoji: '', hint: 'Pontapé de penalty' },
-  { label: 'Cartão',    emoji: '', hint: 'Cartão amarelo/vermelho' },
-  { label: 'Final',     emoji: '', hint: 'Fim do jogo' },
-  { label: 'Especial',  emoji: '', hint: 'Sorteio especial' },
+  { label: 'Golo',      hint: 'Após um golo' },
+  { label: 'Intervalo', hint: 'Pausa do jogo' },
+  { label: 'Penalty',   hint: 'Pontapé de penalty' },
+  { label: 'Cartão',    hint: 'Cartão amarelo/vermelho' },
+  { label: 'Final',     hint: 'Fim do jogo' },
+  { label: 'Especial',  hint: 'Sorteio especial' },
 ]
 
 const MILESTONES = [10, 25, 50, 100, 250, 500, 1000]
