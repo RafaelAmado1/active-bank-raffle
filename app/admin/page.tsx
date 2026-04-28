@@ -44,17 +44,16 @@ type Toast = {
 
 type DrawPreset = {
   label: string
-  emoji: string
   hint: string
 }
 
 const DRAW_PRESETS: DrawPreset[] = [
-  { label: '⚽ Golo',       emoji: '⚽', hint: 'Após um golo' },
-  { label: '⏸ Intervalo',   emoji: '⏸', hint: 'Pausa do jogo' },
-  { label: '🎯 Penalty',    emoji: '🎯', hint: 'Pontapé de penalty' },
-  { label: '🟨 Cartão',     emoji: '🟨', hint: 'Cartão amarelo/vermelho' },
-  { label: '🏆 Final',      emoji: '🏆', hint: 'Fim do jogo' },
-  { label: '🎁 Especial',   emoji: '🎁', hint: 'Sorteio especial' },
+  { label: 'Golo',      emoji: '', hint: 'Após um golo' },
+  { label: 'Intervalo', emoji: '', hint: 'Pausa do jogo' },
+  { label: 'Penalty',   emoji: '', hint: 'Pontapé de penalty' },
+  { label: 'Cartão',    emoji: '', hint: 'Cartão amarelo/vermelho' },
+  { label: 'Final',     emoji: '', hint: 'Fim do jogo' },
+  { label: 'Especial',  emoji: '', hint: 'Sorteio especial' },
 ]
 
 const MILESTONES = [10, 25, 50, 100, 250, 500, 1000]
@@ -510,7 +509,6 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                         title={p.hint}
                         className="group relative bg-white border border-[#E5E7EB] hover:border-[#0096DC] hover:bg-[#0096DC]/[0.03] active:scale-[0.98] text-[#0A0A0A] font-medium py-3.5 px-3 rounded-xl transition-all text-sm disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-[#E5E7EB] disabled:hover:bg-white disabled:active:scale-100 focus-visible:outline-2 focus-visible:outline-[#0096DC] focus-visible:outline-offset-2"
                       >
-                        <span className="block text-2xl mb-1" aria-hidden>{p.emoji}</span>
                         <span className="block">{cleanLabel(p.label)}</span>
                         <span className="absolute top-1.5 right-1.5 text-[10px] font-mono text-[#6B7280] opacity-0 group-hover:opacity-100 transition-opacity">
                           {i + 1}
