@@ -65,9 +65,6 @@ function RegisterForm() {
       <Header />
       <main className="flex-1 flex items-center justify-center px-6 py-10">
         <div className="w-full max-w-sm animate-fade-in-up">
-          <h1 className="text-3xl font-semibold tracking-tight text-[#0A0A0A] mb-2">
-            Participar no sorteio
-          </h1>
           <p className="text-[#6B7280] mb-8 text-sm leading-relaxed">
             Preenche os teus dados para entrar no ActivoBank Lounge.
           </p>
