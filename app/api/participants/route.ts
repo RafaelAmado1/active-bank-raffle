@@ -19,9 +19,9 @@ export async function GET(req: NextRequest) {
 
 // POST /api/participants — register participant
 export async function POST(req: NextRequest) {
-  const { name, phone, token, session_id } = await req.json()
+  const { name, phone, email, token, session_id } = await req.json()
 
-  if (!name?.trim() || !phone?.trim() || !token || !session_id) {
+  if (!name?.trim() || !phone?.trim() || !email?.trim() || !token || !session_id) {
     return Response.json({ error: 'Missing fields' }, { status: 400 })
   }
 
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
   // Insert participant (unique constraint handles duplicates)
   const { data, error } = await supabaseAdmin
     .from('participants')
-    .insert({ session_id, name: name.trim(), phone: phone.trim() })
+    .insert({ session_id, name: name.trim(), phone: phone.trim(), email: email.trim() })
     .select()
     .single()
 

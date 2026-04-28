@@ -12,6 +12,7 @@ function RegisterForm() {
 
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
   const [state, setState] = useState<State>('idle')
   const [message, setMessage] = useState('')
   const [sessionName, setSessionName] = useState('')
@@ -23,7 +24,7 @@ function RegisterForm() {
     const res = await fetch('/api/participants', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, token, session_id: sessionId }),
+      body: JSON.stringify({ name, phone, email, token, session_id: sessionId }),
     })
 
     const data = await res.json()
@@ -68,7 +69,7 @@ function RegisterForm() {
             Participar no sorteio
           </h1>
           <p className="text-[#6B7280] mb-8 text-sm leading-relaxed">
-            Preenche os teus dados para entrares no sorteio da Fan Zone ActivoBank.
+            Preenche os teus dados para entrar no ActivoBank Lounge.
           </p>
 
           {state === 'error' && (
@@ -104,6 +105,21 @@ function RegisterForm() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+351 9XX XXX XXX"
+                className="w-full bg-white border border-[#E5E7EB] rounded-lg px-4 py-3 text-[#0A0A0A] placeholder:text-gray-400 focus:outline-none focus:border-[#0096DC] focus:ring-2 focus:ring-[#0096DC]/20 transition"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-xs font-medium text-[#6B7280] mb-1.5">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="o.teu@email.com"
                 className="w-full bg-white border border-[#E5E7EB] rounded-lg px-4 py-3 text-[#0A0A0A] placeholder:text-gray-400 focus:outline-none focus:border-[#0096DC] focus:ring-2 focus:ring-[#0096DC]/20 transition"
               />
             </div>
