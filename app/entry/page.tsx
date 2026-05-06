@@ -83,15 +83,18 @@ export default function EntryPage() {
                 placeholder="o.teu@email.com"
                 className="w-full bg-white border border-[#E5E7EB] rounded-lg px-4 py-3 text-[#0A0A0A] placeholder:text-gray-400 focus:outline-none focus:border-[#0096DC] focus:ring-2 focus:ring-[#0096DC]/20 transition" />
             </div>
+            <p className="text-xs text-[#6B7280] leading-relaxed">
+              Ao registares-te, consentes com o tratamento dos teus dados pessoais para participação nos sorteios, nos termos da nossa{' '}
+              <a href="/privacidade" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#0096DC]">
+                Política de Privacidade
+              </a>
+              .
+            </p>
             <button type="submit" disabled={state === 'loading'}
               className="mt-2 bg-[#0096DC] hover:bg-[#0064B4] text-white font-semibold text-base py-3.5 rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
               {state === 'loading' ? 'A registar…' : 'Entrar no Lounge'}
             </button>
           </form>
-
-          <p className="text-xs text-[#6B7280] mt-6 leading-relaxed">
-            Os dados serão usados apenas para contacto em caso de prémio. Tratamento conforme RGPD.
-          </p>
         </div>
       </main>
       <Footer />
@@ -110,8 +113,16 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="border-t border-[#E5E7EB] px-6 py-4 text-center">
+    <footer className="border-t border-[#E5E7EB] px-6 py-4 text-center space-y-1">
       <p className="text-xs text-[#6B7280]">ActivoBank · Fan Zone Mundial 2026</p>
+      <a
+        href="/privacidade"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-[#6B7280] underline hover:text-[#0096DC]"
+      >
+        Política de Privacidade
+      </a>
     </footer>
   )
 }
