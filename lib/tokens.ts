@@ -1,6 +1,6 @@
 import { createHmac } from 'crypto'
+import { getEnv } from './env'
 
-const SECRET = process.env.QR_SECRET!
 const WINDOW_SECONDS = 120
 
 function windowFor(timestamp: number): number {
@@ -27,7 +27,7 @@ export function validateToken(raffleId: string, token: string): boolean {
 }
 
 function makeToken(raffleId: string, window: number): string {
-  return createHmac('sha256', SECRET)
+  return createHmac('sha256', getEnv().QR_SECRET)
     .update(`${raffleId}:${window}`)
     .digest('hex')
 }

@@ -9,7 +9,7 @@ export default function PrivacidadePage() {
           Proteção de Dados
         </h1>
         <p className="text-sm text-[#6B7280] mb-10 leading-relaxed">
-          Informação sobre o tratamento de dados pessoais recolhidos no âmbito da Fan Zone ActivoBank, realizada durante o Mundial 2026.
+          Informação sobre o tratamento de dados pessoais recolhidos no âmbito da ActivoBank Lounge, realizada durante o Mundial 2026.
         </p>
 
         <section className="mb-8">
@@ -22,7 +22,7 @@ export default function PrivacidadePage() {
         <section className="mb-8">
           <h2 className="text-base font-semibold text-[#0A0A0A] mb-2">2. Dados Recolhidos</h2>
           <p className="text-sm text-[#374151] leading-relaxed">
-            No âmbito do registo na Fan Zone, são recolhidos os seguintes dados pessoais:
+            No âmbito do registo no ActivoBank Lounge, são recolhidos os seguintes dados pessoais:
           </p>
           <ul className="mt-2 text-sm text-[#374151] leading-relaxed list-disc list-inside space-y-1">
             <li>Nome completo</li>
@@ -34,7 +34,15 @@ export default function PrivacidadePage() {
         <section className="mb-8">
           <h2 className="text-base font-semibold text-[#0A0A0A] mb-2">3. Finalidade do Tratamento</h2>
           <p className="text-sm text-[#374151] leading-relaxed">
-            Os dados são tratados exclusivamente para efeitos de participação nos sorteios realizados na Fan Zone ActivoBank durante o Mundial 2026, e para contacto do titular em caso de atribuição de prémio.
+            Os dados pessoais recolhidos são tratados para as seguintes finalidades:
+          </p>
+          <ul className="mt-2 text-sm text-[#374151] leading-relaxed list-disc list-inside space-y-1">
+            <li>Gestão do acesso ao ActivoBank Lounge e registo de entrada</li>
+            <li>Realização de sorteios durante os eventos e identificação dos vencedores</li>
+            <li>Contacto posterior com os vencedores dos sorteios</li>
+          </ul>
+          <p className="mt-3 text-sm text-[#374151] leading-relaxed">
+            Os dados não são utilizados para fins de marketing directo nem partilhados com terceiros para esses efeitos.
           </p>
         </section>
 
@@ -48,7 +56,14 @@ export default function PrivacidadePage() {
         <section className="mb-8">
           <h2 className="text-base font-semibold text-[#0A0A0A] mb-2">5. Prazo de Conservação</h2>
           <p className="text-sm text-[#374151] leading-relaxed">
-            Os dados pessoais são conservados pelo período de 90 dias após o término do evento. Findo esse prazo, os dados são eliminados de forma definitiva.
+            Os dados pessoais são conservados pelo prazo estritamente necessário à prossecução das finalidades descritas:
+          </p>
+          <ul className="mt-2 text-sm text-[#374151] leading-relaxed list-disc list-inside space-y-1">
+            <li>Dados de registo no Lounge e de participação nos sorteios: eliminados automaticamente ao fim de 90 dias</li>
+            <li>Registos de auditoria internos (sem dados pessoais identificativos): conservados por 365 dias</li>
+          </ul>
+          <p className="mt-3 text-sm text-[#374151] leading-relaxed">
+            Findo este prazo, os dados são eliminados de forma segura e irreversível dos sistemas do responsável pelo tratamento.
           </p>
         </section>
 
@@ -100,7 +115,7 @@ function Header() {
 function Footer() {
   return (
     <footer className="border-t border-[#E5E7EB] px-6 py-4 text-center">
-      <p className="text-xs text-[#6B7280]">ActivoBank · Fan Zone Mundial 2026</p>
+      <p className="text-xs text-[#6B7280]">ActivoBank Lounge · {process.env.NEXT_PUBLIC_EVENT_LABEL ?? 'Mundial 2026'}</p>
     </footer>
   )
 }

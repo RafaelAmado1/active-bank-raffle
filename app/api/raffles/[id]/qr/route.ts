@@ -1,10 +1,19 @@
 import { NextRequest } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { currentToken } from '@/lib/tokens'
-import QRCode from 'qrcode'
+import { checkRateLimit } from '@/lib/rate-limit'
+import { getEnv } from '@/lib/env'
+import { getClientIp } from '@/lib/request-ip'
+import { uuidRe } from '@/lib/uuid'
+import { toDataURL as qrToDataURL } from 'qrcode'
 
-export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const ip = getClientIp(req)
+  const allowed = await checkRateLimit(`qr:${ip}`, 30, 60)
+  if (!allowed) return Response.json({ error: 'Demasiados pedidos.' }, { status: 429 })
+
   const { id } = await params
+  if (!uuidRe.test(id)) return Response.json({ error: 'ID inválido.' }, { status: 400 })
 
   const { data: raffle, error } = await supabaseAdmin
     .from('raffles')
@@ -12,13 +21,13 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     .eq('id', id)
     .single()
 
-  if (error || !raffle) return Response.json({ error: 'Raffle not found' }, { status: 404 })
-  if (raffle.status !== 'active') return Response.json({ error: 'Raffle is not active' }, { status: 410 })
+  if (error || !raffle) return Response.json({ error: 'Sorteio não encontrado.' }, { status: 404 })
+  if (raffle.status !== 'active') return Response.json({ error: 'Sorteio não está ativo.' }, { status: 410 })
 
   const { token, expiresAt } = currentToken(raffle.id)
-  const registerUrl = `${process.env.NEXT_PUBLIC_APP_URL}/register?token=${token}&raffle_id=${raffle.id}`
+  const registerUrl = `${getEnv().NEXT_PUBLIC_APP_URL}/register#t=${token}&s=${raffle.id}`
 
-  const qrDataUrl = await QRCode.toDataURL(registerUrl, {
+  const qrDataUrl = await qrToDataURL(registerUrl, {
     width: 600,
     margin: 2,
     color: { dark: '#1a1a2e', light: '#ffffff' },
@@ -27,13 +36,21 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
 
   const endsAt = new Date(raffle.starts_at).getTime() + raffle.duration_sec * 1000
 
-  return Response.json({
+  // register_url is intentionally omitted — the token must not appear in response
+  // bodies (logs, monitoring tools). The QR image encodes it.
+  // Cache for 30s: the token is deterministic within a 120s window, so the
+  // same QR is valid for the entire window. 30s leaves headroom before rotation.
+  return new Response(JSON.stringify({
     raffle_id: raffle.id,
     label: raffle.label,
-    token,
     expires_at: expiresAt,
     ends_at: endsAt,
     qr_data_url: qrDataUrl,
-    register_url: registerUrl,
+  }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=30, s-maxage=30',
+    },
   })
 }

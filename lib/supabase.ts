@@ -1,38 +1,20 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
+import { getEnv } from './env'
 
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+let _supabaseAdmin: SupabaseClient | null = null
 
-export const supabase = createClient(url, anonKey)
-export const supabaseAdmin = createClient(url, serviceKey, {
-  auth: { persistSession: false },
+function getAdmin(): SupabaseClient {
+  if (!_supabaseAdmin) {
+    const { NEXT_PUBLIC_SUPABASE_URL: url, SUPABASE_SERVICE_ROLE_KEY: serviceKey } = getEnv()
+    _supabaseAdmin = createClient(url, serviceKey, { auth: { persistSession: false } })
+  }
+  return _supabaseAdmin
+}
+
+export const supabaseAdmin = new Proxy({} as SupabaseClient, {
+  get(_target, prop, receiver) {
+    return Reflect.get(getAdmin(), prop, receiver)
+  },
 })
 
-export type Raffle = {
-  id: string
-  label: string
-  status: 'active' | 'closed'
-  duration_sec: number
-  starts_at: string
-  ends_at: string | null
-  winner_id: string | null
-  created_at: string
-}
-
-export type RaffleParticipant = {
-  id: string
-  raffle_id: string
-  name: string
-  phone: string
-  email: string
-  registered_at: string
-}
-
-export type LoungeEntrant = {
-  id: string
-  name: string
-  phone: string
-  email: string
-  entered_at: string
-}
+export type { Raffle, RaffleParticipant, LoungeEntrant } from './types'

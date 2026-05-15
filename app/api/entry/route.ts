@@ -1,11 +1,31 @@
 import { NextRequest } from 'next/server'
+import { z } from 'zod'
 import { supabaseAdmin } from '@/lib/supabase'
+import { checkRateLimit } from '@/lib/rate-limit'
+import { audit } from '@/lib/audit'
+import { getClientIp } from '@/lib/request-ip'
+
+const entrySchema = z.object({
+  name: z.string().min(1).max(100),
+  phone: z.string().regex(/^\+?[1-9]\d{6,14}$/, 'Invalid phone number'),
+  email: z.string().email().max(200),
+  consent: z.boolean().refine((v) => v === true, 'Consent required'),
+})
 
 export async function POST(req: NextRequest) {
-  const { name, phone, email } = await req.json()
-  if (!name?.trim() || !phone?.trim() || !email?.trim()) {
-    return Response.json({ error: 'Missing fields' }, { status: 400 })
+  const ip = getClientIp(req)
+  const allowed = await checkRateLimit(`entry:${ip}`, 10, 3600)
+  if (!allowed) {
+    return Response.json({ error: 'Demasiadas tentativas. Tenta mais tarde.' }, { status: 429 })
   }
+
+  const body = await req.json().catch(() => null)
+  const parsed = entrySchema.safeParse(body)
+  if (!parsed.success) {
+    return Response.json({ error: 'Dados inválidos. Verifica o formulário.' }, { status: 400 })
+  }
+
+  const { name, phone, email } = parsed.data
 
   const { data, error } = await supabaseAdmin
     .from('lounge_entrants')
@@ -13,9 +33,14 @@ export async function POST(req: NextRequest) {
       { name: name.trim(), phone: phone.trim(), email: email.trim() },
       { onConflict: 'phone', ignoreDuplicates: false }
     )
-    .select()
+    .select('id, name, entered_at')
     .single()
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) {
+    console.error('[entry] POST error:', error.message)
+    return Response.json({ error: 'Erro ao registar. Tenta de novo.' }, { status: 500 })
+  }
+
+  audit({ event: 'lounge.entry', entrantId: data.id, ip })
   return Response.json(data, { status: 201 })
 }
