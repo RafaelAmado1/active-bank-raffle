@@ -62,12 +62,14 @@ export function RaffleList({
                   <button
                     onClick={() => onDraw(r.id, r.label)}
                     disabled={drawingId === r.id || parts.length === 0}
+                    aria-label={`Sortear vencedor — ${r.label}`}
                     className="bg-[#0096DC] hover:bg-[#0064B4] text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors disabled:opacity-40 whitespace-nowrap"
                     title={parts.length === 0 ? 'Sem inscritos para sortear' : ''}
                   >
                     {drawingId === r.id ? 'A sortear…' : 'Sortear vencedor'}
                   </button>
                   <button onClick={() => onClose(r.id)}
+                    aria-label={`Encerrar sem vencedor — ${r.label}`}
                     className="text-sm font-semibold px-4 py-2.5 rounded-xl bg-[#F7F8FA] hover:bg-[#E5E7EB] text-[#0A0A0A] transition-colors">
                     Encerrar sem vencedor
                   </button>

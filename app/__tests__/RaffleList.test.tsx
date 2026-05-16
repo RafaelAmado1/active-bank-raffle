@@ -50,13 +50,13 @@ describe('RaffleList', () => {
     />)
     expect(screen.getByText('Golo')).toBeInTheDocument()
     expect(screen.getByText('Alice')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Sortear vencedor' })).toBeEnabled()
+    expect(screen.getByRole('button', { name: /Sortear vencedor/ })).toBeEnabled()
   })
 
   it('draw button is disabled when there are no participants', () => {
     const raffle = mkRaffle({ id: 'r1' })
     render(<RaffleList {...baseProps} activeRaffles={[raffle]} participants={{ r1: [] }} />)
-    expect(screen.getByRole('button', { name: 'Sortear vencedor' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: /Sortear vencedor/ })).toBeDisabled()
   })
 
   it('calls onDraw with raffle id and label', async () => {
@@ -68,7 +68,7 @@ describe('RaffleList', () => {
       participants={{ r1: [PARTICIPANT] }}
       onDraw={onDraw}
     />)
-    await user.click(screen.getByRole('button', { name: 'Sortear vencedor' }))
+    await user.click(screen.getByRole('button', { name: /Sortear vencedor/ }))
     expect(onDraw).toHaveBeenCalledWith('r1', 'Final')
   })
 
@@ -81,7 +81,7 @@ describe('RaffleList', () => {
       participants={{ r1: [PARTICIPANT] }}
       onClose={onClose}
     />)
-    await user.click(screen.getByRole('button', { name: 'Encerrar sem vencedor' }))
+    await user.click(screen.getByRole('button', { name: /Encerrar sem vencedor/ }))
     expect(onClose).toHaveBeenCalledWith('r1')
   })
 

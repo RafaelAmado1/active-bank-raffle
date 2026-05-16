@@ -2,8 +2,12 @@
   "framework": "nextjs",
   "regions": ["lhr1"],
   "functions": {
-    "app/api/raffles/[id]/draw/route.ts": {
+    "app/api/raffles/[id]/route.ts": {
       "maxDuration": 10,
+      "memory": 256
+    },
+    "app/api/cron/cleanup/route.ts": {
+      "maxDuration": 30,
       "memory": 256
     }
   },
