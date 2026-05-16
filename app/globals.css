@@ -42,11 +42,39 @@ html, body {
 }
 .animate-shake { animation: shake .4s ease-in-out; }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  padding: 0.5rem 1.25rem;
+  background: #0096DC;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  outline: 2px solid #0064B4;
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-up,
   .animate-fade-in,
   .animate-shake,
-  .animate-pulse-dot {
-    animation: none !important;
+  .animate-pulse-dot,
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
