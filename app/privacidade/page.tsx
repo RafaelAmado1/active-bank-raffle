@@ -8,7 +8,7 @@ export default function PrivacidadePage() {
         <h1 className="text-3xl font-semibold tracking-tight text-[#0A0A0A] mb-2">
           Proteção de Dados
         </h1>
-        <p className="text-sm text-[#6B7280] mb-10 leading-relaxed">
+        <p className="text-sm text-[#4B5563] mb-10 leading-relaxed">
           Informação sobre o tratamento de dados pessoais recolhidos no âmbito da ActivoBank Lounge, realizada durante o Mundial 2026.
         </p>
 
@@ -115,7 +115,7 @@ function Header() {
 function Footer() {
   return (
     <footer className="border-t border-[#E5E7EB] px-6 py-4 text-center">
-      <p className="text-xs text-[#6B7280]">ActivoBank Lounge · {process.env.NEXT_PUBLIC_EVENT_LABEL ?? 'Mundial 2026'}</p>
+      <p className="text-xs text-[#4B5563]">ActivoBank Lounge · {process.env.NEXT_PUBLIC_EVENT_LABEL ?? 'Mundial 2026'}</p>
     </footer>
   )
 }

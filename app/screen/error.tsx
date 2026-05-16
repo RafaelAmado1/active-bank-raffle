@@ -14,7 +14,7 @@ export default function ScreenError({
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#0A0A0A] gap-4 text-center px-4">
       <h2 className="text-lg font-semibold text-white">Erro no ecrã de sorteio</h2>
-      <p className="text-sm text-[#6B7280] max-w-sm">
+      <p className="text-sm text-[#4B5563] max-w-sm">
         Recarrega a página para continuar.
       </p>
       <button

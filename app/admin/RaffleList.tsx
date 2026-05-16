@@ -31,7 +31,7 @@ export function RaffleList({
     <>
       {activeRaffles.length > 0 && (
         <section className="space-y-4">
-          <h2 className="text-sm font-semibold text-[#6B7280] uppercase tracking-wider px-1">Ativos</h2>
+          <h2 className="text-sm font-semibold text-[#4B5563] uppercase tracking-wider px-1">Ativos</h2>
           {activeRaffles.map(r => {
             const parts = participants[r.id] ?? []
             return (
@@ -43,7 +43,7 @@ export function RaffleList({
                   </div>
                   <span className="text-2xl font-semibold tabular-nums text-[#0096DC]">{parts.length}</span>
                 </div>
-                <p className="text-xs text-[#6B7280] mb-4">
+                <p className="text-xs text-[#4B5563] mb-4">
                   {parts.length === 0 ? 'Sem inscritos ainda' : `${parts.length} inscrito${parts.length === 1 ? '' : 's'}`}
                 </p>
                 {parts.length > 0 && (
@@ -52,7 +52,7 @@ export function RaffleList({
                       {parts.map(p => (
                         <li key={p.id} className="px-1 py-2 flex items-center justify-between text-sm">
                           <span className="font-medium text-[#0A0A0A]">{p.name}</span>
-                          <span className="text-xs text-[#6B7280] tabular-nums">{p.phone}</span>
+                          <span className="text-xs text-[#4B5563] tabular-nums">{p.phone}</span>
                         </li>
                       ))}
                     </ul>
@@ -80,14 +80,14 @@ export function RaffleList({
 
       {closedWithoutWinner.length > 0 && (
         <section className="space-y-4">
-          <h2 className="text-sm font-semibold text-[#6B7280] uppercase tracking-wider px-1">Encerrados — sem vencedor</h2>
+          <h2 className="text-sm font-semibold text-[#4B5563] uppercase tracking-wider px-1">Encerrados — sem vencedor</h2>
           {closedWithoutWinner.map(r => {
             const parts = participants[r.id]
             return (
               <div key={r.id} className="bg-white border border-[#E5E7EB] rounded-2xl p-5 sm:p-6 flex items-center justify-between gap-4">
                 <div>
                   <h3 className="text-base font-semibold text-[#0A0A0A]">{r.label}</h3>
-                  <p className="text-xs text-[#6B7280] mt-0.5">{parts ? `${parts.length} inscritos` : '…'}</p>
+                  <p className="text-xs text-[#4B5563] mt-0.5">{parts ? `${parts.length} inscritos` : '…'}</p>
                 </div>
                 <div className="flex gap-2 flex-shrink-0">
                   <button onClick={() => onDraw(r.id, r.label)} disabled={drawingId === r.id}
@@ -95,7 +95,7 @@ export function RaffleList({
                     {drawingId === r.id ? 'A sortear…' : 'Sortear vencedor'}
                   </button>
                   <button onClick={() => onArchive(r.id)}
-                    className="text-sm px-3 py-2.5 rounded-xl bg-[#F7F8FA] hover:bg-[#E5E7EB] text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
+                    className="text-sm px-3 py-2.5 rounded-xl bg-[#F7F8FA] hover:bg-[#E5E7EB] text-[#4B5563] hover:text-[#0A0A0A] transition-colors">
                     Arquivar
                   </button>
                 </div>
@@ -107,12 +107,12 @@ export function RaffleList({
 
       {closedWithWinner.length > 0 && (
         <section className="space-y-3">
-          <h2 className="text-sm font-semibold text-[#6B7280] uppercase tracking-wider px-1">Concluídos</h2>
+          <h2 className="text-sm font-semibold text-[#4B5563] uppercase tracking-wider px-1">Concluídos</h2>
           {closedWithWinner.map(r => (
             <div key={r.id} className="bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-5 flex items-center justify-between gap-4">
               <div>
                 <h3 className="text-sm font-semibold text-[#0A0A0A]">{r.label}</h3>
-                <p className="text-xs text-[#6B7280] mt-0.5">
+                <p className="text-xs text-[#4B5563] mt-0.5">
                   {r.ends_at ? new Date(r.ends_at).toLocaleString('pt-PT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : ''}
                 </p>
               </div>
@@ -123,7 +123,7 @@ export function RaffleList({
                   Mostrar no ecrã
                 </button>
                 <button onClick={() => onArchive(r.id)}
-                  className="text-xs px-3 py-1.5 rounded-lg bg-[#F7F8FA] hover:bg-[#E5E7EB] text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
+                  className="text-xs px-3 py-1.5 rounded-lg bg-[#F7F8FA] hover:bg-[#E5E7EB] text-[#4B5563] hover:text-[#0A0A0A] transition-colors">
                   Arquivar
                 </button>
               </div>
@@ -138,8 +138,8 @@ export function RaffleList({
             onClick={onToggleArchive}
             className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[#F7F8FA] transition-colors"
           >
-            <span className="text-sm font-semibold text-[#6B7280]">Arquivo ({archivedRaffles.length})</span>
-            <span className={`text-[#6B7280] transition-transform text-xs ${showArchive ? 'rotate-180' : ''}`}>▼</span>
+            <span className="text-sm font-semibold text-[#4B5563]">Arquivo ({archivedRaffles.length})</span>
+            <span className={`text-[#4B5563] transition-transform text-xs ${showArchive ? 'rotate-180' : ''}`}>▼</span>
           </button>
           {showArchive && (
             <ul className="divide-y divide-[#E5E7EB] border-t border-[#E5E7EB]">
@@ -147,10 +147,10 @@ export function RaffleList({
                 <li key={r.id} className="px-5 py-3 flex items-center justify-between text-sm gap-3">
                   <div>
                     <span className="font-medium text-[#0A0A0A]">{r.label}</span>
-                    {r.winner_id && <span className="ml-2 text-xs text-[#6B7280]">✓ vencedor sorteado</span>}
+                    {r.winner_id && <span className="ml-2 text-xs text-[#4B5563]">✓ vencedor sorteado</span>}
                   </div>
                   <div className="flex items-center gap-3 flex-shrink-0">
-                    <span className="text-[11px] text-[#6B7280] tabular-nums whitespace-nowrap">
+                    <span className="text-[11px] text-[#4B5563] tabular-nums whitespace-nowrap">
                       {r.ends_at ? new Date(r.ends_at).toLocaleString('pt-PT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : ''}
                     </span>
                     {r.winner_id && (
@@ -160,7 +160,7 @@ export function RaffleList({
                       </button>
                     )}
                     <button onClick={() => onUnarchive(r.id)}
-                      className="text-xs text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
+                      className="text-xs text-[#4B5563] hover:text-[#0A0A0A] transition-colors">
                       Restaurar
                     </button>
                   </div>
@@ -173,7 +173,7 @@ export function RaffleList({
 
       {isEmpty && (
         <section className="bg-white border border-[#E5E7EB] rounded-2xl p-10 text-center">
-          <p className="text-[#6B7280] text-sm">Nenhum sorteio criado ainda. Usa o botão acima para ativar o primeiro.</p>
+          <p className="text-[#4B5563] text-sm">Nenhum sorteio criado ainda. Usa o botão acima para ativar o primeiro.</p>
         </section>
       )}
     </>

@@ -58,7 +58,7 @@ function RegisterForm() {
       <div className="min-h-screen bg-white flex flex-col">
         <PageHeader />
         <main className="flex-1 flex items-center justify-center px-6 text-center">
-          <p className="text-[#6B7280] text-sm">QR code inválido. Escaneia o código no ecrã.</p>
+          <p className="text-[#4B5563] text-sm">QR code inválido. Escaneia o código no ecrã.</p>
         </main>
         <PageFooter />
       </div>
@@ -76,9 +76,9 @@ function RegisterForm() {
             </svg>
           </div>
           <h1 className="text-3xl font-semibold text-[#0A0A0A] tracking-tight mb-2">Inscrito!</h1>
-          <p className="text-[#6B7280] mb-1">Sorteio</p>
+          <p className="text-[#4B5563] mb-1">Sorteio</p>
           <p className="text-lg font-medium text-[#0A0A0A] mb-8">{raffleLabel}</p>
-          <p className="text-sm text-[#6B7280] max-w-xs">
+          <p className="text-sm text-[#4B5563] max-w-xs">
             Acompanha o ecrã. Caso sejas o vencedor, a equipa ActivoBank irá contactar-te.
           </p>
         </main>
@@ -93,7 +93,7 @@ function RegisterForm() {
       <main className="flex-1 flex items-center justify-center px-6 py-10">
         <div className="w-full max-w-sm">
           <h1 className="text-3xl font-semibold tracking-tight text-[#0A0A0A] mb-2">Participar no sorteio</h1>
-          <p className="text-[#6B7280] mb-8 text-sm leading-relaxed">
+          <p className="text-[#4B5563] mb-8 text-sm leading-relaxed">
             Preenche os teus dados para entrar no sorteio do ActivoBank Lounge.
           </p>
 
@@ -105,19 +105,19 @@ function RegisterForm() {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div>
-              <label htmlFor="name" className="block text-xs font-medium text-[#6B7280] mb-1.5">Nome</label>
+              <label htmlFor="name" className="block text-xs font-medium text-[#4B5563] mb-1.5">Nome</label>
               <input id="name" type="text" required maxLength={100} value={name} onChange={e => setName(e.target.value)}
                 placeholder="O teu nome"
                 className="w-full bg-white border border-[#E5E7EB] rounded-lg px-4 py-3 text-[#0A0A0A] placeholder:text-gray-400 focus:outline-none focus:border-[#0096DC] focus:ring-2 focus:ring-[#0096DC]/20 transition" />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-xs font-medium text-[#6B7280] mb-1.5">Telemóvel</label>
+              <label htmlFor="phone" className="block text-xs font-medium text-[#4B5563] mb-1.5">Telemóvel</label>
               <input id="phone" type="tel" required maxLength={20} value={phone} onChange={e => setPhone(e.target.value)}
                 placeholder="+351912345678"
                 className="w-full bg-white border border-[#E5E7EB] rounded-lg px-4 py-3 text-[#0A0A0A] placeholder:text-gray-400 focus:outline-none focus:border-[#0096DC] focus:ring-2 focus:ring-[#0096DC]/20 transition" />
             </div>
             <div>
-              <label htmlFor="email" className="block text-xs font-medium text-[#6B7280] mb-1.5">Email</label>
+              <label htmlFor="email" className="block text-xs font-medium text-[#4B5563] mb-1.5">Email</label>
               <input id="email" type="email" required maxLength={200} value={email} onChange={e => setEmail(e.target.value)}
                 placeholder="o.teu@email.com"
                 className="w-full bg-white border border-[#E5E7EB] rounded-lg px-4 py-3 text-[#0A0A0A] placeholder:text-gray-400 focus:outline-none focus:border-[#0096DC] focus:ring-2 focus:ring-[#0096DC]/20 transition" />
@@ -132,7 +132,7 @@ function RegisterForm() {
                 onChange={e => setConsent(e.target.checked)}
                 className="mt-0.5 h-4 w-4 shrink-0 rounded border-[#E5E7EB] accent-[#0096DC] cursor-pointer"
               />
-              <label htmlFor="consent" className="text-xs text-[#6B7280] leading-relaxed cursor-pointer">
+              <label htmlFor="consent" className="text-xs text-[#4B5563] leading-relaxed cursor-pointer">
                 Aceito o tratamento dos meus dados pessoais nos termos da{' '}
                 <a href="/privacidade" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#0096DC]">
                   Política de Privacidade

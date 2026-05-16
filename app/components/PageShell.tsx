@@ -10,12 +10,12 @@ export function PageHeader() {
 export function PageFooter() {
   return (
     <footer className="border-t border-[#E5E7EB] px-6 py-4 text-center space-y-1">
-      <p className="text-xs text-[#6B7280]">ActivoBank Lounge · {process.env.NEXT_PUBLIC_EVENT_LABEL ?? 'Mundial 2026'}</p>
+      <p className="text-xs text-[#4B5563]">ActivoBank Lounge · {process.env.NEXT_PUBLIC_EVENT_LABEL ?? 'Mundial 2026'}</p>
       <a
         href="/privacidade"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-xs text-[#6B7280] underline hover:text-[#0096DC]"
+        className="text-xs text-[#4B5563] underline hover:text-[#0096DC]"
       >
         Política de Privacidade
       </a>

@@ -120,7 +120,7 @@ export default function ScreenPage() {
           <h1 className="text-4xl font-semibold tracking-tight text-[#0A0A0A] mb-3">
             Os sorteios aparecem aqui
           </h1>
-          <p className="text-[#6B7280] text-lg max-w-md">
+          <p className="text-[#4B5563] text-lg max-w-md">
             Quando um sorteio for ativado, o QR code aparece neste ecrã. Fique atento!
           </p>
         </main>
@@ -302,7 +302,7 @@ function RaffleCard({ raffle, qr, endsAt }: { raffle: Raffle; qr: RaffleQR | und
         }
       </div>
       <p className="text-5xl font-semibold tabular-nums text-[#0096DC]">{remaining}s</p>
-      <p className="text-xs text-[#6B7280] mt-1 uppercase tracking-wider">Tempo restante</p>
+      <p className="text-xs text-[#4B5563] mt-1 uppercase tracking-wider">Tempo restante</p>
     </div>
   )
 }
@@ -318,7 +318,7 @@ function ScreenHeader({ offline }: { offline?: boolean }) {
             Sem ligação ao servidor
           </span>
         )}
-        <span className="text-xs text-[#6B7280] uppercase tracking-[0.2em]">ActivoBank Lounge · {process.env.NEXT_PUBLIC_EVENT_LABEL ?? 'Mundial 2026'}</span>
+        <span className="text-xs text-[#4B5563] uppercase tracking-[0.2em]">ActivoBank Lounge · {process.env.NEXT_PUBLIC_EVENT_LABEL ?? 'Mundial 2026'}</span>
       </div>
     </header>
   )
@@ -327,7 +327,7 @@ function ScreenHeader({ offline }: { offline?: boolean }) {
 function ScreenFooter() {
   return (
     <footer className="border-t border-[#E5E7EB] px-8 py-4 text-center">
-      <p className="text-xs text-[#6B7280]">Sorteio promovido pelo ActivoBank · Participação gratuita</p>
+      <p className="text-xs text-[#4B5563]">Sorteio promovido pelo ActivoBank · Participação gratuita</p>
     </footer>
   )
 }

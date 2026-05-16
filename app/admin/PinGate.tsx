@@ -62,11 +62,13 @@ export function PinGate({ onUnlock }: { onUnlock: () => void }) {
         <div className={`w-full max-w-xs ${shake ? 'animate-shake' : ''}`}>
           <div className="text-center mb-8">
             <h1 className="text-2xl font-semibold tracking-tight text-[#0A0A0A]">Acesso Admin</h1>
-            <p className="text-sm text-[#6B7280] mt-1.5">Introduz o PIN de acesso</p>
+            <p className="text-sm text-[#4B5563] mt-1.5">Introduz o PIN de acesso</p>
           </div>
-          {error && <p role="alert" className="text-red-600 text-sm mb-4 text-center font-medium">{error}</p>}
+          {error && <p id="pin-error" role="alert" className="text-red-600 text-sm mb-4 text-center font-medium">{error}</p>}
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <label htmlFor="pin-input" className="sr-only">PIN de acesso</label>
             <input
+              id="pin-input"
               type="password"
               autoFocus
               autoComplete="current-password"
@@ -74,6 +76,7 @@ export function PinGate({ onUnlock }: { onUnlock: () => void }) {
               onChange={e => setPin(e.target.value)}
               disabled={locked || submitting}
               placeholder="PIN"
+              aria-describedby={error ? 'pin-error' : undefined}
               className="w-full bg-[#F7F8FA] border border-transparent rounded-xl px-4 py-3 text-center text-lg tracking-widest focus:outline-none focus:bg-white focus:border-[#0096DC] focus:ring-2 focus:ring-[#0096DC]/20 disabled:opacity-50 transition"
             />
             <button

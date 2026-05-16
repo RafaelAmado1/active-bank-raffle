@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import * as Sentry from '@sentry/nextjs'
 
 export default function AdminError({
   error,
@@ -9,12 +10,12 @@ export default function AdminError({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  useEffect(() => { console.error(error) }, [error])
+  useEffect(() => { Sentry.captureException(error) }, [error])
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-4 text-center px-4">
       <h2 className="text-lg font-semibold text-[#0A0A0A]">Erro no painel de administração</h2>
-      <p className="text-sm text-[#6B7280] max-w-sm">
+      <p className="text-sm text-[#4B5563] max-w-sm">
         Não foi possível carregar esta secção.
       </p>
       <button

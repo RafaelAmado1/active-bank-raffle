@@ -152,7 +152,7 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
               Ecrã TV
             </a>
             <button onClick={onLogout}
-              className="text-xs text-[#6B7280] hover:text-[#0A0A0A] px-3 py-1.5 rounded-lg hover:bg-[#F7F8FA] transition-colors">
+              className="text-xs text-[#4B5563] hover:text-[#0A0A0A] px-3 py-1.5 rounded-lg hover:bg-[#F7F8FA] transition-colors">
               Sair
             </button>
           </div>
