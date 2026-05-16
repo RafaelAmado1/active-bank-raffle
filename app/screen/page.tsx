@@ -2,8 +2,11 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { createClient } from '@supabase/supabase-js'
+import dynamic from 'next/dynamic'
 import type { Raffle, RaffleQR, Winner } from '@/lib/types'
 import { usePolling } from '@/lib/hooks'
+
+const TrophyCanvas = dynamic(() => import('./TrophyCanvas'), { ssr: false })
 
 const screenSupabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -246,6 +249,11 @@ function WinnerScreen({ winner }: { winner: Winner }) {
           >
             {winner.name}
           </h1>
+        </div>
+
+        {/* Trophy 3D */}
+        <div className="mt-6" aria-hidden>
+          <TrophyCanvas />
         </div>
 
         {/* Phone */}
