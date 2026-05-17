@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import Image from 'next/image'
 import type { Raffle, RaffleParticipant as Participant, Toast } from '@/lib/types'
 import { usePolling } from '@/lib/hooks'
 import { CreateRaffleForm } from './CreateRaffleForm'
@@ -139,8 +140,7 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
     <div className="min-h-screen bg-[#F7F8FA]">
       <header className="bg-white border-b border-[#E5E7EB] sticky top-0 z-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo_activobank.svg" alt="ActivoBank" width={137} height={22} />
+          <Image src="/logo_activobank.svg" alt="ActivoBank" width={137} height={22} priority />
           <div className="flex items-center gap-3">
             {offline && (
               <span className="text-xs font-medium text-red-600 bg-red-50 border border-red-200 px-2.5 py-1 rounded-lg">

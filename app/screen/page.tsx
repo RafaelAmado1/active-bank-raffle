@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import type { Raffle, RaffleQR, Winner } from '@/lib/types'
 import { usePolling } from '@/lib/hooks'
 
@@ -206,8 +207,7 @@ function WinnerScreen({ winner }: { winner: Winner }) {
 
       {/* Header */}
       <header className="relative z-10 px-10 pt-8">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo_activobank.svg" alt="ActivoBank" width={148} height={24} className="brightness-0 invert opacity-90" />
+        <Image src="/logo_activobank.svg" alt="ActivoBank" width={148} height={24} className="brightness-0 invert opacity-90" priority />
       </header>
 
       {/* Main content */}
@@ -252,8 +252,7 @@ function WinnerScreen({ winner }: { winner: Winner }) {
         {/* Powered by */}
         <div className="flex flex-col items-center gap-2 mt-10" style={{ opacity: show ? 1 : 0, transition: 'opacity 0.6s ease-out 0.65s' }}>
           <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: 'rgba(255,255,255,0.4)' }}>Powered by</p>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo_activobank.svg" alt="ActivoBank" width={110} height={18} className="brightness-0 invert opacity-60" />
+          <Image src="/logo_activobank.svg" alt="ActivoBank" width={110} height={18} className="brightness-0 invert opacity-60" />
         </div>
       </main>
     </div>
@@ -279,8 +278,7 @@ function RaffleCard({ raffle, qr, endsAt }: { raffle: Raffle; qr: RaffleQR | und
       <h2 className="text-3xl font-semibold tracking-tight text-[#0A0A0A] mb-5">{raffle.label}</h2>
       <div className="bg-[#F7F8FA] rounded-xl p-4 mb-4 flex items-center justify-center">
         {qr?.qr_data_url
-          // eslint-disable-next-line @next/next/no-img-element
-          ? <img src={qr.qr_data_url} alt="QR Code" className="w-80 h-80 sm:w-96 sm:h-96 block mx-auto" />
+          ? <Image src={qr.qr_data_url} alt="QR Code para participar no sorteio" width={384} height={384} unoptimized className="w-80 h-80 sm:w-96 sm:h-96 block mx-auto" />
           : <div className="w-80 h-80 sm:w-96 sm:h-96 bg-[#E5E7EB] rounded-lg animate-pulse" />
         }
       </div>
@@ -293,8 +291,7 @@ function RaffleCard({ raffle, qr, endsAt }: { raffle: Raffle; qr: RaffleQR | und
 function ScreenHeader({ offline }: { offline?: boolean }) {
   return (
     <header className="border-b border-[#E5E7EB] px-8 py-5 flex items-center justify-between">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo_activobank.svg" alt="ActivoBank" width={137} height={22} />
+      <Image src="/logo_activobank.svg" alt="ActivoBank" width={137} height={22} priority />
       <div className="flex items-center gap-4">
         {offline && (
           <span className="text-xs font-medium text-red-600 bg-red-50 border border-red-200 px-2.5 py-1 rounded-lg">

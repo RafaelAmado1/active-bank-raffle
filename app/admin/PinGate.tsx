@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 const MAX_PIN_ATTEMPTS = 5
 
@@ -55,8 +56,7 @@ export function PinGate({ onUnlock }: { onUnlock: () => void }) {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <header className="border-b border-[#E5E7EB] px-6 py-4">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo_activobank.svg" alt="ActivoBank" width={137} height={22} />
+        <Image src="/logo_activobank.svg" alt="ActivoBank" width={137} height={22} priority />
       </header>
       <main className="flex-1 flex flex-col items-center justify-center p-6">
         <div className={`w-full max-w-xs ${shake ? 'animate-shake' : ''}`}>
