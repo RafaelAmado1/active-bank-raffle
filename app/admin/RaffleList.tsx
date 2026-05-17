@@ -121,8 +121,9 @@ export function RaffleList({
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button onClick={() => onReplay(r.id, r.label)}
+                  aria-label={`Mostrar no ecrã — ${r.label}`}
                   className="text-xs font-medium px-3 py-1.5 rounded-lg bg-[#0096DC]/10 hover:bg-[#0096DC]/20 text-[#0096DC] transition-colors flex items-center gap-1.5">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6a4 4 0 1 0 4-4V1L3.5 3 6 5V4a3 3 0 1 1-3 3H2a4 4 0 0 1 0-1Z" fill="currentColor"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6a4 4 0 1 0 4-4V1L3.5 3 6 5V4a3 3 0 1 1-3 3H2a4 4 0 0 1 0-1Z" fill="currentColor"/></svg>
                   Mostrar no ecrã
                 </button>
                 <button onClick={() => onArchive(r.id)}
@@ -159,6 +160,7 @@ export function RaffleList({
                     </span>
                     {r.winner_id && (
                       <button onClick={() => onReplay(r.id, r.label)}
+                        aria-label={`Mostrar no ecrã — ${r.label}`}
                         className="text-xs text-[#0096DC] hover:text-[#0064B4] transition-colors">
                         Mostrar no ecrã
                       </button>
