@@ -97,6 +97,7 @@ export function RaffleList({
                     {drawingId === r.id ? 'A sortear…' : 'Sortear vencedor'}
                   </button>
                   <button onClick={() => onArchive(r.id)}
+                    aria-label={`Arquivar — ${r.label}`}
                     className="text-sm px-3 py-2.5 rounded-xl bg-[#F7F8FA] hover:bg-[#E5E7EB] text-[#4B5563] hover:text-[#0A0A0A] transition-colors">
                     Arquivar
                   </button>
@@ -125,6 +126,7 @@ export function RaffleList({
                   Mostrar no ecrã
                 </button>
                 <button onClick={() => onArchive(r.id)}
+                  aria-label={`Arquivar — ${r.label}`}
                   className="text-xs px-3 py-1.5 rounded-lg bg-[#F7F8FA] hover:bg-[#E5E7EB] text-[#4B5563] hover:text-[#0A0A0A] transition-colors">
                   Arquivar
                 </button>
@@ -162,6 +164,7 @@ export function RaffleList({
                       </button>
                     )}
                     <button onClick={() => onUnarchive(r.id)}
+                      aria-label={`Restaurar — ${r.label}`}
                       className="text-xs text-[#4B5563] hover:text-[#0A0A0A] transition-colors">
                       Restaurar
                     </button>

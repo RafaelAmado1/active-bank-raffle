@@ -188,23 +188,6 @@ function WinnerScreen({ winner }: { winner: Winner }) {
         ))}
       </div>
 
-      {/* CSS keyframes injected inline */}
-      <style>{`
-        @keyframes floatUp {
-          0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
-          80%  { opacity: 0.6; }
-          100% { transform: translateY(-105vh) translateX(var(--drift)) scale(0.4); opacity: 0; }
-        }
-        @keyframes pulse-ring {
-          0%   { transform: translate(-50%,-50%) scale(0.85); opacity: 0.25; }
-          100% { transform: translate(-50%,-50%) scale(1.15); opacity: 0; }
-        }
-        @keyframes shimmer {
-          0%,100% { opacity: 0.85; }
-          50%      { opacity: 1; }
-        }
-      `}</style>
-
       {/* Pulsing ring behind name */}
       <div className="absolute pointer-events-none" style={{
         top: '52%', left: '50%',
